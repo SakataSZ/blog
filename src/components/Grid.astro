@@ -1,0 +1,25 @@
+---
+interface Props {
+  col?: number;
+  gap?: number;
+}
+
+const { col = 1, gap = 0 } = Astro.props;
+---
+
+<div class="grid">
+  <slot />
+</div>
+
+<style define:vars={{ col, gap }}>
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(var(--col), 1fr);
+    grid-gap: var(--gap);
+  }
+  @media (max-width: 768px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

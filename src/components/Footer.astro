@@ -1,0 +1,27 @@
+---
+import Container from "@/components/Container.astro";
+import Grid from "@/components/Grid.astro";
+import Logo from "@/components/Logo.astro";
+---
+
+<footer>
+  <Container>
+    <Grid col={2}>
+      <div>
+        <Logo margin=".5rem 0" />
+        <p>
+          技術的なメモや日常のことを書いていく一般ITエンジニアのブログです。最近はWebアプリケーション開発がメインです。IoTや機械学習なども触ります。
+        </p>
+      </div>
+    </Grid>
+  </Container>
+</footer>
+
+<style>
+  footer {
+    margin-top: 2rem;
+    padding: 2rem 0;
+    background-color: var(--bg-paper);
+    font-size: 0.8rem;
+  }
+</style>

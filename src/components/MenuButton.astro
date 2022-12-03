@@ -1,0 +1,62 @@
+<span class="menu-button"></span>
+
+<script>
+  let isOpen = false;
+  const menuButton = document.querySelector(".menu-button");
+  const drawer = document.querySelector(".drawer");
+
+  if (menuButton && drawer) {
+    menuButton.addEventListener("click", () => {
+      if (isOpen) {
+        drawer.classList.remove("open");
+        menuButton.classList.remove("open");
+        isOpen = false;
+      } else {
+        drawer.classList.add("open");
+        menuButton.classList.add("open");
+        isOpen = true;
+      }
+    });
+  }
+</script>
+
+<style>
+  span.menu-button {
+    position: relative;
+    display: block;
+    margin: 0 20px 0 auto;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+  }
+  span.menu-button::before {
+    content: "";
+    position: absolute;
+    top: 35%;
+    left: 25%;
+    width: 20px;
+    height: 2px;
+    background-color: #666;
+    transition: transform 0.2s ease-in-out;
+  }
+  span.menu-button::after {
+    content: "";
+    position: absolute;
+    bottom: 35%;
+    left: 25%;
+    width: 20px;
+    height: 2px;
+    background-color: #666;
+    transition: transform 0.2s ease-in-out;
+  }
+  span.menu-button.open::before {
+    transform: rotate(45deg) translate(3.7px, 3px);
+    transition: transform 0.2s ease-in-out;
+  }
+  span.menu-button.open::after {
+    transform: rotate(-45deg) translate(3.7px, -3px);
+    transition: transform 0.2s ease-in-out;
+  }
+</style>

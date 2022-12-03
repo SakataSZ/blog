@@ -1,0 +1,49 @@
+---
+interface Props {
+  size?: "sm" | "md" | "lg" | "xl";
+  marginX?: number;
+  marginY?: number;
+}
+
+const { size = "md", marginX = 4, marginY = 0 } = Astro.props;
+const margin = `${marginY}rem ${marginX}rem`;
+const marginMobile = `${marginY}rem 16px`;
+---
+
+<div class="container">
+  <div class={`${size}`}>
+    <slot />
+  </div>
+</div>
+
+<style define:vars={{ margin, marginMobile }}>
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin: var(--margin);
+  }
+
+  .sm {
+    width: 640px;
+  }
+
+  .md {
+    width: 768px;
+  }
+
+  .lg {
+    width: 1024px;
+  }
+
+  .xl {
+    width: 1280px;
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      margin: var(--marginMobile);
+    }
+  }
+</style>

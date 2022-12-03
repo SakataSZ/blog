@@ -1,0 +1,37 @@
+---
+import type { Summary } from "@/types/Article";
+
+type Query = {
+  limit?: number;
+  offset?: number;
+  sort?: "asc" | "desc";
+};
+
+export const getSummaries = async (query?: Query) => {
+  const articles = await Astro.glob("/src/pages/blog/articles/*.md");
+  const { limit = 10, offset = 0, sort = "desc" } = query || {};
+
+  const summaries = articles
+    .map(
+      (article) =>
+        ({
+          ...article.frontmatter,
+          href: article.url || "",
+        } as Summary)
+    )
+    .sort((a, b) => {
+      if (sort === "desc") {
+        return (
+          new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+        );
+      } else {
+        return (
+          new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
+        );
+      }
+    })
+    .slice(offset, offset + limit);
+
+  return summaries;
+};
+---

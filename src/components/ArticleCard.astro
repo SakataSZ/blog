@@ -1,0 +1,71 @@
+---
+import type { Summary } from "@/types/Article";
+
+interface Props {
+  summary: Summary;
+}
+
+const { summary } = Astro.props;
+const href = summary.href;
+const createdAt = summary.createdAt.split("T")[0];
+---
+
+<div class="card">
+  <div class="content">
+    <div class="title">
+      <a href={href}>
+        <h3>{summary.title}</h3>
+      </a>
+    </div>
+    <div class="date">
+      <span class="body2">
+        📆 {createdAt}
+      </span>
+    </div>
+    <div class="category">
+      {
+        summary.category.map((category) => (
+          <span class="body2">🗂️{category}</span>
+        ))
+      }
+    </div>
+    <div class="description">
+      <p class="body1">{summary.description}</p>
+    </div>
+  </div>
+  <div class="icon"></div>
+</div>
+
+<style>
+  .card {
+    position: relative;
+    padding: 1rem 1rem 2rem calc(1rem + 8px);
+    border-radius: 8px;
+    background-color: var(--bg-paper);
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 1px 2px 0 rgba(0, 0, 0, 0.24);
+  }
+
+  .card::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 10px;
+    height: 100%;
+    background-color: var(--primary);
+    border-radius: 8px 0 0 8px;
+  }
+
+  .date {
+    display: flex;
+    align-items: center;
+    margin: 0.5rem 0;
+  }
+
+  .date > span {
+    margin-right: 1rem;
+  }
+  .category span {
+    margin-right: 1rem;
+  }
+</style>

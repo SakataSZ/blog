@@ -1,0 +1,17 @@
+---
+import Container from "@/components/Container.astro";
+import Document from "@/layouts/Document.astro";
+import Hero from "@/components/Hero.astro";
+---
+
+<Document title="About">
+  <Hero title="About Me✨" />
+  <Container marginY={2}>
+    <h2 style="margin-bottom: 1rem;">Biography</h2>
+    <p class="body1">
+      1997年生まれ。東京都内で働くWebエンジニアです。
+      フロントエンドはTypeScript+Reactがメインで、バックエンドはFastAPIやExpressを使用しています。
+      最近はNext.jsやAstroを触っています。
+    </p>
+  </Container>
+</Document>

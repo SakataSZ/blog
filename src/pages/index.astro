@@ -1,0 +1,105 @@
+---
+import ArticleCard from "@/components/ArticleCard.astro";
+import Button from "@/components/Button.astro";
+import Container from "@/components/Container.astro";
+import Document from "@/layouts/Document.astro";
+import Grid from "@/components/Grid.astro";
+import Stack from "@/components/Stack.astro";
+
+import { getSummaries } from "@/utils/article.astro";
+const summaries = await getSummaries({ limit: 3 });
+---
+
+<Document>
+  <Container size="xl">
+    <Grid col={2}>
+      <div class="item">
+        <div>
+          <div style="padding-bottom: 1.5rem;">
+            <h1>Welcome🎉</h1>
+            <h1 class="text-grad">SakataSZ</h1>
+            <h1>Blog</h1>
+          </div>
+          <p class="body1" style="padding-bottom: 1rem;">
+            技術的なメモや日常のことを書いていく一般ITエンジニアのブログです。
+            最近はWebアプリケーション開発がメインです。IoTや機械学習なども触ります。
+          </p>
+          <span class="button-box">
+            <Button href="/blog">記事一覧</Button>
+          </span>
+        </div>
+      </div>
+      <div class="item image-container">
+        <img class="image1" src="images/hero1.png" alt="hero" />
+        <img class="image2" src="images/hero2.png" alt="hero" />
+      </div>
+    </Grid>
+  </Container>
+  <hr />
+
+  <Container>
+    <h2 style="margin-bottom: .5rem;">最近の投稿</h2>
+    <Stack>
+      {summaries.map((summary) => <ArticleCard summary={summary} />)}
+    </Stack>
+  </Container>
+</Document>
+
+<style>
+  .item {
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .item h1 {
+    font-size: 3rem;
+    letter-spacing: 0.15em;
+  }
+  .image1 {
+    height: auto;
+    width: 90%;
+    position: relative;
+    left: -20px;
+    z-index: 1;
+    animation: moveUpDown 5s ease-in-out infinite;
+    border-radius: 15px;
+  }
+  .image2 {
+    height: auto;
+    width: 90%;
+    position: absolute;
+    left: 50px;
+    border-radius: 15px;
+    transform: rotate3d(1, 1, 0.24, 40deg);
+  }
+  @media (max-width: 768px) {
+    .item h1 {
+      text-align: center;
+    }
+    .image-container {
+      display: none;
+    }
+    .hero-image1 {
+      display: none;
+    }
+    .hero-image2 {
+      display: none;
+    }
+    .button-box {
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  @keyframes moveUpDown {
+    0%,
+    100% {
+      transform: translateY(0) rotate3d(1, 1, 0.24, 40deg);
+    }
+    50% {
+      transform: translateY(30px) rotate3d(1, 1, 0.24, 40deg);
+    }
+  }
+</style>

@@ -1,0 +1,21 @@
+---
+import ArticleCard from "@/components/ArticleCard.astro";
+import Container from "@/components/Container.astro";
+import Document from "@/layouts/Document.astro";
+import Stack from "@/components/Stack.astro";
+import Hero from "@/components/Hero.astro";
+
+import { getSummaries } from "@/utils/article.astro";
+
+const summaries = await getSummaries();
+---
+
+<Document title="Blog">
+  <Hero title="Tech Blog🚀" />
+  <Container marginY={2}>
+    <h2 style="margin-bottom: 1rem;">記事一覧</h2>
+    <Stack>
+      {summaries.map((summary) => <ArticleCard summary={summary} />)}
+    </Stack>
+  </Container>
+</Document>

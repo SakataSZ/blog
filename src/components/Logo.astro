@@ -1,0 +1,24 @@
+---
+const { margin } = Astro.props;
+---
+
+<a href="/">
+  <img src="/logo.svg" alt="logo" />
+  <p>SakataSZ</p>
+</a>
+
+<style define:vars={{ margin }}>
+  a {
+    display: flex;
+    align-items: center;
+    margin: var(--margin);
+  }
+  img {
+    width: 40px;
+    height: 40px;
+    margin-right: 8px;
+  }
+  a > p {
+    font-size: 18px;
+  }
+</style>
