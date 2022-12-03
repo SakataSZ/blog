@@ -3,6 +3,7 @@ interface Props {
   size?: "sm" | "md" | "lg" | "xl";
   marginX?: number;
   marginY?: number;
+  class?: string;
 }
 
 const { size = "md", marginX = 4, marginY = 0 } = Astro.props;
@@ -11,7 +12,7 @@ const marginMobile = `${marginY}rem 16px`;
 ---
 
 <div class="container">
-  <div class={`${size}`}>
+  <div class={`${size} ${Astro.props.class}`}>
     <slot />
   </div>
 </div>

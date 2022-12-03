@@ -6,12 +6,88 @@ import Hero from "@/components/Hero.astro";
 
 <Document title="About">
   <Hero title="About Me✨" />
-  <Container marginY={2}>
-    <h2 style="margin-bottom: 1rem;">Biography</h2>
-    <p class="body1">
+  <Container marginY={2} class="hoge">
+    <h2>Biography</h2>
+    <p style="margin-bottom: 2rem;">
       1997年生まれ。東京都内で働くWebエンジニアです。
       フロントエンドはTypeScript+Reactがメインで、バックエンドはFastAPIやExpressを使用しています。
       最近はNext.jsやAstroを触っています。
     </p>
+    <h2>Skills</h2>
+    <h3>Frontend</h3>
+    <ul>
+      <li>HTML, CSS</li>
+      <li>JavaScript, jQuery, TypeScript</li>
+      <li>React, Vue, Svelte</li>
+      <li>Next.js, Astro</li>
+      <li>Bootstrap, Tailwind CSS, MUI, etc...</li>
+    </ul>
+    <h3>Backend</h3>
+    <ul>
+      <li>Java, Node.js, PHP, Python</li>
+      <li>Spring, Express, FastAPI</li>
+      <li>PostgreSQL, MySQL, MongoDB</li>
+    </ul>
+    <h3>Analytics</h3>
+    <ul>
+      <li>Numpy, Cupy, Pandas, etc...</li>
+      <li>Scikit-learn, PyTorch, TensorFlow, etc...</li>
+      <li>Matplotlib, Seaborn, Plotly, etc...</li>
+    </ul>
+    <h3>Infrastructure</h3>
+    <ul>
+      <li>Git, GitHub, GitLab, etc...</li>
+      <li>Ansilble, Docker, Kubernetes, etc...</li>
+      <li>Google Cloud Platform, AWS, etc...</li>
+    </ul>
+    <h3>Others</h3>
+    <ul>
+      <li>Linux, Windows, macOS</li>
+      <li>VSCode, Vim, Emacs</li>
+      <li>Slack, Discord, Teams, etc...</li>
+      <li>Photoshop, Figma, etc...</li>
+    </ul>
   </Container>
 </Document>
+
+<style>
+  .hoge {
+    font-size: 14px;
+    line-height: 1.8rem;
+  }
+  h2 {
+    display: flex;
+    margin: 1rem 0px;
+    font-size: 1.5rem;
+  }
+  h2::before {
+    content: "";
+    width: 30px;
+    height: 2px;
+    background: var(--gradient);
+    position: relative;
+    top: 0.75rem;
+    margin-right: 1rem;
+  }
+  h2::after {
+    content: "";
+    flex-grow: 1;
+    height: 2px;
+    background: var(--gradient);
+    position: relative;
+    top: 0.75rem;
+    margin-left: 1rem;
+  }
+  h3 {
+    margin: 0.5rem 0px;
+  }
+  ul {
+    margin-left: 1rem;
+    list-style: none;
+    line-height: 1.5rem;
+  }
+  li::before {
+    content: "▶";
+    margin-right: 0.5rem;
+  }
+</style>
