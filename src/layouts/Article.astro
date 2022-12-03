@@ -1,27 +1,67 @@
 ---
 import Document from "./Document.astro";
+import Toc from "@/components/Toc.astro";
 
-const { content } = Astro.props;
+const { content, headings } = Astro.props;
+console.log(content);
 ---
 
 <Document title={content.title}>
-  <div class="article">
-    <slot />
+  <div class="hero">
+    <h1>{content.title}</h1>
+  </div>
+  <div class="wide">
+    <div class="container">
+      <div class="grid">
+        <div class="article">
+          <slot />
+        </div>
+        <div>
+          <Toc headings={headings} />
+        </div>
+      </div>
+    </div>
   </div>
 </Document>
 
 <style is:inline>
-  .article {
-    max-width: 768px;
-    margin: 100px auto 0 auto;
-    padding: 2rem 2rem;
-    background-color: var(--bg-paper);
-    border-radius: 1rem;
+  .hero {
+    margin: 60px 0;
+    padding: 60px 0;
+    text-align: center;
+    background: var(--gradient);
+    color: white;
+    font-size: 0.8em;
   }
 
+  .wide {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .container {
+    position: relative;
+  }
+
+  .grid {
+    display: flex;
+    gap: 20px;
+  }
+  .article {
+    max-width: 960px;
+    display: block;
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+    padding: 40px 40px;
+    border-radius: 1rem;
+    box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
   .article h1 {
     font-size: 1.6rem;
-    margin: 1.5rem 0 1rem 0;
+    margin: 3rem 0 2rem 0;
+    text-align: center;
   }
   .article h1::before {
     content: "🚀";
@@ -29,14 +69,16 @@ const { content } = Astro.props;
   }
   .article h2 {
     font-size: 1.5rem;
-    margin: 3rem 0 0rem 0;
-    padding: 0 0 0.2rem 0;
+    padding-top: 120px;
+    margin-top: -110px;
   }
   .article h3 {
     font-size: 1.2rem;
-    margin: 0.5rem 0 0.5rem 0;
+    margin: 2rem 0 1rem 0;
     display: flex;
     align-items: center;
+    padding-top: 120px;
+    margin-top: -110px;
   }
   .article h3::before {
     content: "📌";
@@ -73,7 +115,6 @@ const { content } = Astro.props;
   .article a {
     word-break: break-all;
   }
-
   .article p code {
     font-family: consolas;
     letter-spacing: 0;
@@ -81,19 +122,17 @@ const { content } = Astro.props;
     padding: 0.1rem 0.4rem;
     border-radius: 0.2rem;
   }
-
   .article img {
     max-width: 100%;
     margin: 1rem 0;
     border-radius: 0.7rem;
   }
-
   .astro-code {
+    display: block;
     margin: 1rem 0 2rem 0;
     padding: 1rem;
     border-radius: 0.7rem;
   }
-
   .article blockquote {
     border-left: 4px solid #ffffff;
     border-image: linear-gradient(to bottom, #06daff 0%, #3c69ff 100%);
@@ -102,19 +141,15 @@ const { content } = Astro.props;
     margin-left: 0;
   }
 
-  @media (max-width: 800px) {
+  @media (max-width: 768px) {
+    .wide {
+      padding: 0 10px;
+    }
+    .grid {
+      flex-direction: column;
+    }
     .article {
-      margin: 80px 5px 0 5px;
-      padding: 10px;
-    }
-    .article h1 {
-      font-size: 1.4rem;
-    }
-    .article h2 {
-      font-size: 1.3rem;
-    }
-    .article h3 {
-      font-size: 1.1rem;
+      padding: 20px 10px;
     }
   }
 </style>
