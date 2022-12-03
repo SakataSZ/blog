@@ -12,12 +12,36 @@ const title = Astro.props.title
 
 <!DOCTYPE html>
 <html lang="ja">
-  <head>
+  <head prefix="og: http://ogp.me/ns# website: http://ogp.me/ns/website#">
     <title>{title}</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
+    <meta
+      name="description"
+      content="Author: SakataSZ, Category: React, Next.js, TypeScript, Astro, Description: Portfolio blog of SakataSZ who is a web developer."
+    />
     <link rel="icon" type="image/svg+xml" href="/logo.svg" />
     <meta name="generator" content={Astro.generator} />
+    <!-- OGP -->
+    <meta property="og:title" content={title} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://sakatasz.com" />
+    <meta property="og:image" content="https://sakatasz.com/logo.svg" />
+    <meta
+      property="og:description"
+      content="Portfolio blog of SakataSZ who is a web developer."
+    />
+    <meta property="og:site_name" content={defaultTitle} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@sakatasz" />
+    <meta name="twitter:creator" content="@sakatasz" />
+    <meta name="twitter:image" content="https://sakatasz.com/ogp.png" />
+    <meta name="twitter:image:alt" content="SakataSZ" />
+    <meta name="twitter:title" content={title} />
+    <meta
+      name="twitter:description"
+      content="Portfolio blog of SakataSZ who is a web developer."
+    />
   </head>
   <body>
     <Layout>
