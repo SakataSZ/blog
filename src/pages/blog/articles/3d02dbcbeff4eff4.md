@@ -2,8 +2,8 @@
 title: Web開発を行うための環境構築
 description: Windows11でWeb開発(node環境の構築)を行うための環境構築方法です。
 category: [Node.js, 環境構築]
-createdAt: 2022-12-03
-updatedAt: 2022-12-01
+createdAt: 2022-10-13
+updatedAt: 2022-12-03
 draft: false
 layout: /src/layouts/Article.astro
 ---
